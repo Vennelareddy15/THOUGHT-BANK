@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Bank</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Outfit';
+            background: url(https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .contact-container{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            position: relative;
+        }
+        .contact-left2, .contact-left1, .contact-left-title{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+        }
+        .contact-left-title h2{
+            font-weight: 600;
+            color: black;
+            font-size: 60px;
+        }
+        .contact-left-title hr{
+            border: none;
+            width: 300px;
+            height: 5px;
+            background-color: black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .inputs{
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 500;
+            color: black;
+            border-radius: 50px;
+        }
+        .labels{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .contact-left2 textarea{
+            height: 140px;
+            padding-top: 15px;
+            border-radius: 20px;
+        }
+        button{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: black;
+            gap: 10px;
+            border: none;
+            border-radius: 50px;
+            background-image: linear-gradient(45deg,rgb(79, 172, 175),#b9e7ee);
+        }
+        .home_button img{
+            width: 80px;
+            border-radius: 50%;
+            position:absolute;
+            top: 40px;
+            right: 40px;
+            transition: 1s;
+        }
+        .home_button img:hover {
+            transform: scale(1.3); 
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="contact-left">
+            <div class="contact-left-title">
+                <h2>ToDo</h2>
+                <hr>
+            </div>
+            <div class="home_button">
+                <a href="/home"><img src="{{ url_for('static', filename='home.png') }}" alt="vennela dhi tappu"></a>
+            </div>
+            <form action="/display_tasks" method="get" class="contact-left1">
+                <button type="submit">Display Tasks</button>
+            </form>
+            <form method="POST" action="/add_task" class="contact-left2">
+                <label class="labels" for="task">Task :</label>
+                <input class="inputs" type="text" name="task" id="task" required>
+                <label class="labels" for="description">Description :</label>
+                <textarea class="inputs" name="description" id="description" required></textarea>
+                <label class="labels" for="deadline">Deadline :</label>
+                <input class="inputs" type="time" name="deadline" id="deadline" required>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+        <div class="contact-right">
+            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/businessman-with-to-do-list-4723389-3928044.png" alt="">
+        </div>
+    </div>
+    
+        <div class="contact-right">
+            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/businessman-with-to-do-list-4723389-3928044.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

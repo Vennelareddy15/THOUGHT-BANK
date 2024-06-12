@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Bank</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Outfit';
+            background: url(https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .contact-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly; 
+        }
+        .contact-left{
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+        }
+        .contact-left1, .contact-left2{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            padding: 0px 20px;
+            padding-right: 50px;
+            margin-left: 50px;
+        }
+        .contact-left-title h2{
+            font-weight: 600;
+            color: black;
+            font-size: 60px;
+        }
+        .contact-left-title hr{
+            border: none;
+            width: 300px;
+            height: 5px;
+            background-color: black;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .contact-left-title{
+            margin: 0px 80px;
+            padding-top: 20px;
+        }
+        .inputs{
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 500;
+            color: black;
+            border-radius: 50px;
+        }
+        .labels{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .contact-left textarea{
+            height: 140px;
+            padding-top: 15px;
+            border-radius: 20px;
+        }
+        button{
+            margin: auto;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: black;
+            gap: 10px;
+            margin: 10px 10px;
+            border: none;
+            border-radius: 50px;
+            background-image: linear-gradient(45deg,rgb(79, 172, 175),#b9e7ee);
+        }
+        button:hover{
+            background-image: linear-gradient(45deg, rgb(66, 142, 144), #93c7cd);
+        }
+        .my_img{
+            width: 350px;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+        .home_button img{
+            width: 70px;
+            border-radius: 50%;
+            position:absolute;
+            top: 40px;
+            right: 40px;
+            transition: 1s;
+        }
+        .home_button img:hover {
+            transform: scale(1.3); 
+            z-index: 2;
+        }
+        .display_button{
+            padding-left: 60px;
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="contact-left-title">
+            <h2>Venture</h2>
+            <hr>
+        </div>
+        <div class="home_button">
+            <a href="/home"><img src="{{ url_for('static', filename='home.png') }}" alt="vennela dhi tappu"></a>
+        </div>
+        <form action="/display_ideas" method="get" class="display_button">
+            <button type="submit">Display Ideas</button>
+        </form>
+        <form method="post" action="/add_idea" class="contact-left">
+            <div class="contact-left1">
+                <label class="labels" for="domain">Domain :</label>
+                <input class="inputs" type="text" name="domain" id="domain" required>
+                <label class="labels" for="title">Title :</label>
+                <input class="inputs" name="title" type="text" id="title" required>
+                <label class="labels" for="ideas">Ideas :</label>
+                <textarea class="inputs" type="text" name="ideas" id="ideas" required></textarea>
+            </div>
+            <img class="my_img" src="https://previews.123rf.com/images/unitonevector/unitonevector1904/unitonevector190400742/123603723-organization-has-achieved-its-goal-cartoon-flat-short-term-and-long-term-tasks-men-in-suits-enter.jpg" alt="">
+            <div class="contact-left2">
+                <label class="labels" for="requirements">Requirements :</label>
+                <textarea class="inputs" type="text" id="requirements" name="requirements" ></textarea>
+                <label class="labels" for="description">Description :</label>
+                <input class="inputs" type="text" name="description" id="description" required>
+                <label class="labels" for="how">How :</label>
+                <input class="inputs" type="text" name="how" id="how" required>
+                <button type="submit">Add Idea</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Bank</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./app.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Outfit';
+            background: url(https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .contact-container{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .contact-left2, .contact-left1, .contact-left-title{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+        }
+        .contact-left-title h2{
+            font-weight: 600;
+            color: black;
+            font-size: 60px;
+        }
+        .contact-left-title hr{
+            border: none;
+            width: 500px;
+            height: 5px;
+            background-color: black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .inputs{
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 500;
+            color: black;
+            border-radius: 50px;
+        }
+        .labels{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .contact-left2 textarea{
+            height: 140px;
+            padding-top: 15px;
+            border-radius: 20px;
+        }
+        button{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: black;
+            gap: 10px;
+            border: none;
+            border-radius: 50px;
+            background-image: linear-gradient(45deg,rgb(79, 172, 175),#b9e7ee);
+        }
+        img{
+            width: 600px;
+        }
+        .home_button img{
+            width: 70px;
+            border-radius: 50%;
+            position:absolute;
+            top: 40px;
+            right: 40px;
+            transition: 1s;
+        }
+        .home_button img:hover {
+            transform: scale(1.3); 
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="contact-left">
+            <div class="contact-left-title">
+                <h2>Random Thoughts</h2>
+                <hr>
+            </div>
+            <div class="home_button">
+                <a href="/home"><img src="{{ url_for('static', filename='home.png') }}" alt="vennela dhi tappu"></a>
+            </div>
+            <form action="/display_thoughts" class="contact-left1">
+                <button type="submit">Display Thoughts</button>
+            </form>
+            <form method="post" action="/add_thought" class="contact-left2">
+                <label class="labels" for="why">Why :</label>
+                <input class="inputs" type="text" name="why" id="why" required>
+                <label class="labels" for="what">What :</label>
+                <textarea class="inputs" name="what" id="what" required></textarea>
+                <label class="labels" for="when">When :</label>
+                <input class="inputs" type="time" id="when" name="when" required>
+                <button type="submit">Add Thought</button>
+            </form>
+        </div>
+        <div class="contact-right">
+            <img src="https://www.freepnglogos.com/uploads/thinking-png/thinking-get-started-with-marketing-for-new-retail-business-owners-8.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

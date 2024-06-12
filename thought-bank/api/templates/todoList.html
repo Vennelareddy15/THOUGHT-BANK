@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Bank</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: 'Outfit';
+            background: url(https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        #app {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 50px;
+            margin-bottom: 60px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            font-size: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .check{
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(79, 172, 175);
+            color: white;
+        }
+        tbody{
+            background-color:#f2f2f2;
+        }
+        tr:hover {
+            background-color:rgb(209, 236, 238);
+        }
+        button{
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: black;
+            border: none;
+            border-radius: 50px;
+            background-image: linear-gradient(45deg,rgb(79, 172, 175),#b9e7ee);
+        }
+        .home_button img{
+            width: 70px;
+            border-radius: 50%;
+            position:absolute;
+            top: 40px;
+            right: 40px;
+            transition: 1s;
+        }
+        .home_button img:hover {
+            transform: scale(1.3); 
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Todo List</h1>
+    <div class="home_button">
+        <a href="/home"><img src="{{ url_for('static', filename='home.png') }}" alt="vennela dhi tappu"></a>
+    </div>
+    <form id="taskForm" method="POST" action="/selected_tasks">
+        <table>
+            <thead>
+                <tr>
+                    <th class="check">Select</th>
+                    <th class="check">Task</th>
+                    <th class="check">Description</th>
+                    <th class="check">Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(data_arr[0]|length) %}
+                    <tr>
+                        <td class="check">
+                            <input type="checkbox" name="selectedTasks" value="{{ data_arr[0][i] }}">
+                        </td>
+                        <td>{{ data_arr[0][i] }}</td>
+                        <td>{{ data_arr[1][i] }}</td>
+                        <td>{{ data_arr[2][i] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Done</button>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("taskForm");
+        form.addEventListener("submit", function(event) {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let checked = false;
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checked = true;
+                }
+            });
+            if (!checked) {
+                event.preventDefault();
+                alert("Please select at least one task before submitting.");
+            }
+        });
+    });
+</script>
+</body>
+</html>
